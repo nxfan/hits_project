@@ -283,9 +283,10 @@ class simpleapp_tk(tkinter.Tk):
         button5.pack(side='right',padx=15,pady=15) 
         button4.pack(side='left',padx=15,pady=15) 
 
-
-
-if __name__ == "__main__":
+def main():
     app = simpleapp_tk(None)
     app.title('HITS ANALYZER')
     app.mainloop()
+
+if __name__ == "__main__":
+    main()
