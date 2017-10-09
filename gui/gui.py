@@ -72,8 +72,9 @@ class simpleapp_tk(tkinter.Tk):
                         eventdate="".join(lolpython)
                         timestamp=eventdate+' '+eventtime
                         linear=row[14]
-                        rotation=row[21]
+                        rotation=row[25]
                         cur.execute("INSERT INTO hits (Eventid, playerid, primaryposition, impacttime, linearforce, rotationalforce) SELECT %s,%s,%s,%s,%s,%s WHERE NOT EXISTS (SELECT 1 FROM hits WHERE Eventid= %s);",(eventid,playerid,primaryposition,timestamp,linear,rotation,eventid))
+                        cur.execute("INSERT INTO players (playerid) SELECT %s WHERE NOT EXISTS (SELECT 1 FROM players WHERE playerid = %s);", (playerid, playerid))
                         cur.execute("SELECT COUNT(*) FROM hits WHERE Eventid = 513643")
                         x=cur.fetchall()
                         conn.commit()
